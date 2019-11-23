@@ -7,7 +7,7 @@ const App = () => {
         persons: [
             { name: 'Max', age: 29, hobbies: 'Racing' },
             { name: 'Manu', age: 28, hobbies: 'lifting' },
-            { name: 'Steph', age: 26, hobbies: 'growing' }
+            { name: 'Steph', age: 27, hobbies: 'growing' }
         ]
     });
 
