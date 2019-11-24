@@ -19,7 +19,7 @@ const App = () => {
             !show
                 ? setPersonState({
                       persons: [
-                          { name: 'Larry', age: 29, hobbies: 'making' },
+                          { name: 'Larry', age: 29, hobbies: 'making the' },
                           { name: 'scary', age: 28, hobbies: 'shit' },
                           { name: 'mary', age: 26, hobbies: 'happen' }
                       ]
