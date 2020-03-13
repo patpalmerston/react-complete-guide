@@ -1,66 +1,85 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import Person from './person/Person';
 import './App.css';
 
-const App = () => {
-    const [personState, setPersonState] = useState({
-        persons: [
-            { name: 'Max', age: 29, hobbies: 'Racing' },
-            { name: 'Manu', age: 28, hobbies: 'lifting' },
-            { name: 'Steph', age: 27, hobbies: 'growing' }
-        ]
-    });
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            persons: [
+                { id: 1, name: 'Max', age: 29, hobbies: 'Racing' },
+                { id: 2, name: 'Manu', age: 28, hobbies: 'lifting' },
+                { id: 3, name: 'Steph', age: 27, hobbies: 'growing' }
+            ],
+            showPersons: false
+        };
+    }
 
-    const [show, setShow] = useState(true);
-
-    const switchNameHandler = props => {
-        setShow(!show);
-        {
-            !show
-                ? setPersonState({
-                      persons: [
-                          { name: 'Larry', age: 29, hobbies: 'making the' },
-                          { name: 'scary', age: 28, hobbies: 'shit' },
-                          { name: 'mary', age: 26, hobbies: 'happen' }
-                      ]
-                  })
-                : setPersonState({
-                      persons: [
-                          { name: 'Max', age: 29, hobbies: 'Racing' },
-                          { name: 'Manu', age: 28, hobbies: 'lifting' },
-                          { name: 'Steph', age: 26, hobbies: 'growing' }
-                      ]
-                  });
-        }
+    switchNameHandler = props => {
+        this.setState({
+            persons: [
+                { id: 1, name: 'Larry', age: 29, hobbies: 'making the' },
+                { id: 2, name: 'scary', age: 28, hobbies: 'shit' },
+                { id: 3, name: 'mary', age: 26, hobbies: 'happen' }
+            ]
+        });
     };
 
-    return (
-        <div className='App'>
-            <h1>Hi I'm a React App</h1>
-            <button onClick={switchNameHandler}> SwitchName</button>
-            {personState.persons.map((x, i) => (
-                <div key={i}>
-                    {
-                        <Person name={x.name} age={x.age}>
-                            {' '}
-                            <h6>Hobbies: {x.hobbies}</h6>
-                        </Person>
-                    }
+    nameChangedHandler = (e, id) => {
+        this.setState({
+            persons: [
+                { id: 1, name: e.target.value, age: 29, hobbies: 'making the' },
+                { id: 2, name: 'scary', age: 28, hobbies: 'shit' },
+                { id: 3, name: 'mary', age: 26, hobbies: 'happen' }
+            ]
+        });
+    };
+
+    togglePersonsHandler = e => {
+        const doesShow = this.state.showPersons;
+        this.setState({ showPersons: !doesShow });
+    };
+
+    deletePersonHandler = personIndex => {
+        //use slice to make a copy
+        const persons = this.state.persons.slice();
+        //or use spread to make copy
+        // const person = [...this.state.person]
+        //splice removes the item in a copy of state
+        persons.splice(personIndex, 1);
+        this.setState({ persons: persons });
+    };
+
+    render() {
+        let persons = null;
+        if (this.state.showPersons === true) {
+            persons = (
+                <div>
+                    {this.state.persons.map((x, i) => {
+                        return (
+                            <Person
+                                name={x.name}
+                                age={x.age}
+                                input={e => this.nameChangedHandler(e, x.id)}
+                                // option1
+                                delete={this.deletePersonHandler.bind(this, i)}
+                                // option2
+                                // delete={() => this.deletePersonHandler(i)}
+                                key={x.id}
+                            />
+                        );
+                    })}
                 </div>
-            ))}
-        </div>
-    );
-};
+            );
+        }
+        return (
+            <div className='App'>
+                <h1>Hi I'm a React App</h1>
+                <button onClick={this.togglePersonsHandler}> toggle</button>
+                {persons}
+            </div>
+        );
+    }
+}
 
 export default App;
-
-// constructor() {
-//     super();
-//     this.state = {
-//         persons: [
-//             { name: 'Max', age: 29, hobbies: 'Racing' },
-//             { name: 'Manu', age: 28, hobbies: 'lifting' },
-//             { name: 'Steph', age: 26, hobbies: 'growing' }
-//         ]
-//     };
-// }
