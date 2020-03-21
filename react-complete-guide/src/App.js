@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Person from './person/Person';
+import Radium from 'radium';
 import './App.css';
 
 class App extends Component {
@@ -27,14 +28,14 @@ class App extends Component {
 
     nameChangedHandler = (e, id) => {
         const personIndex = this.state.persons.findIndex(p => {
-            return p.id ===id
-        })
-        const person = {...this.state.persons[personIndex]};
+            return p.id === id;
+        });
+        const person = { ...this.state.persons[personIndex] };
 
-        person.name = event.target.value
+        person.name = e.target.value;
 
-        const persons = [...this.state.persons]
-        persons[personIndex] = person
+        const persons = [...this.state.persons];
+        persons[personIndex] = person;
 
         this.setState({
             persons: [
@@ -61,6 +62,14 @@ class App extends Component {
     };
 
     render() {
+        const style = {
+            backgroundColor: 'green',
+            color: 'white',
+            font: 'inherit',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer'
+        };
         let persons = null;
         if (this.state.showPersons === true) {
             persons = (
@@ -81,15 +90,31 @@ class App extends Component {
                     })}
                 </div>
             );
+            style.backgroundColor = 'red';
+            style.border = '2px solid black';
+            style.color = 'black';
         }
+
+        let classes = [];
+        if (this.state.persons.length <= 2) {
+            classes.push('red');
+        }
+        if (this.state.persons.length <= 1) {
+            classes.push('bold');
+            classes.join(' ');
+        }
+
         return (
             <div className='App'>
-                <h1>Hi I'm a React App</h1>
-                <button onClick={this.togglePersonsHandler}> toggle</button>
+                <p className={classes.join(' ')}>Hi I'm a React App</p>
+                <button onClick={this.togglePersonsHandler} style={style}>
+                    {' '}
+                    TOGGLE
+                </button>
                 {persons}
             </div>
         );
     }
 }
 
-export default App;
+export default Radium(App);
