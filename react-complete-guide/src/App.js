@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Person from './person/Person';
+import Todos from './todo/Todos';
 import Radium from 'radium';
 import './App.css';
 
@@ -120,6 +121,7 @@ class App extends Component {
                     TOGGLE
                 </button>
                 {persons}
+                <Todos />
             </div>
         );
     }
