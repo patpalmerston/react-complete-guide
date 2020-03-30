@@ -1,10 +1,10 @@
 import React from 'react';
 
-function TodoForm() {
+function TodoForm(props) {
     return (
         <div>
             <div>TodoForm</div>
-            <form action='#'>
+            <form onSubmit={props.addItem}>
                 <input type='text' placeholder='Enter Task' />
                 <button type='submit'>add</button>
             </form>

@@ -8,14 +8,11 @@ class Todos extends React.Component {
     constructor() {
         super();
         this.state = {
-            todos: [
-                { id: 1, task: 'my first task' },
-                { id: 2, task: 'my second task' }
-            ]
+            todos: []
         };
     }
 
-    inputHandler = (e, id) => {
+    addItemHandler = e => {
         // need to get the index/id of the todo to be changed
         this.setState({
             todos: [{}]
