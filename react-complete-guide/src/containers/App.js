@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Person from './person/Person';
-import Todos from './todo/Todos';
+import Person from '../components/persons/person/Person';
+import Todos from '../todo/Todos';
 
 import './App.css';
 
 const StyledButton = styled.button`
-    background-color: green;
+    background-color: ${props => (props.alt ? 'red' : 'green')};
     color: white;
     font: inherit;
     border: 1px solid blue;
@@ -14,7 +14,7 @@ const StyledButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: lightgreen;
+        background-color: ${props => (props.alt ? 'salmon' : 'lightgreen')};
         color: black;
     }
 `;
@@ -78,18 +78,18 @@ class App extends Component {
     };
 
     render() {
-        const style = {
-            backgroundColor: 'green',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
-        };
+        // const style = {
+        //     backgroundColor: 'green',
+        //     color: 'white',
+        //     font: 'inherit',
+        //     border: '1px solid blue',
+        //     padding: '8px',
+        //     cursor: 'pointer',
+        //     ':hover': {
+        //         backgroundColor: 'lightgreen',
+        //         color: 'black'
+        //     }
+        // };
         let persons = null;
         if (this.state.showPersons === true) {
             persons = (
@@ -110,13 +110,13 @@ class App extends Component {
                     })}
                 </div>
             );
-            style.backgroundColor = 'red';
-            style.border = '2px solid black';
-            style.color = 'black';
-            style[':hover'] = {
-                backgroundColor: 'salmon',
-                color: 'white'
-            };
+            // style.backgroundColor = 'red';
+            // style.border = '2px solid black';
+            // style.color = 'black';
+            // style[':hover'] = {
+            //     backgroundColor: 'salmon',
+            //     color: 'white'
+            // };
         }
 
         let classes = [];
@@ -131,7 +131,10 @@ class App extends Component {
         return (
             <div className='App'>
                 <p className={classes.join(' ')}>Hi I'm a React App</p>
-                <StyledButton onClick={this.togglePersonsHandler}>
+                <StyledButton
+                    alt={this.state.showPersons}
+                    onClick={this.togglePersonsHandler}
+                >
                     {' '}
                     TOGGLE
                 </StyledButton>
