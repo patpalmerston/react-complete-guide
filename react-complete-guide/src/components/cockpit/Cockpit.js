@@ -5,7 +5,13 @@ import classes from './Cockpit.css';
 const Cockpit = props => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-    });
+        setTimeout(() => {
+            alert('saved data to cloud');
+        }, 1000);
+    }, [props.persons]);
+    // a blank array would trigger the useEffect on the initial render, but on no other
+
+    // useEffect
 
     const assignedClasses = [];
     let btnClass = '';
