@@ -11,9 +11,14 @@ class Persons extends Component {
     //     console.log('[Persons.js] componentWillRecieveProps', props)
     // }
 
+    // checking for the props and only updating when props connected to this component are used, saved on performance. So that every time app is re rendered it will not trigger the persons component
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponentUpdate');
-        return true;
+        if (nextProps.persons !== this.props.persons) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
