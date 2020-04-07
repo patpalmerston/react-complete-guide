@@ -8,10 +8,19 @@ const Cockpit = props => {
         setTimeout(() => {
             alert('saved data to cloud');
         }, 1000);
+        // you can make a return that will run after a render cycle
+        return () => {
+            console.log('[Cockpit.js] cleanup work in useEffect');
+        };
     }, [props.persons]);
     // a blank array would trigger the useEffect on the initial render, but on no other
 
-    // useEffect
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+        return () => {
+            console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+        };
+    });
 
     const assignedClasses = [];
     let btnClass = '';
