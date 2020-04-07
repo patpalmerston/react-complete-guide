@@ -28,10 +28,10 @@ const Cockpit = props => {
         btnClass = classes.Red;
     }
 
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
         assignedClasses.push(classes.red); // classes = ['red']
     }
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) {
         assignedClasses.push(classes.bold); // classes = ['red', 'bold']
     }
 
@@ -45,5 +45,5 @@ const Cockpit = props => {
         </div>
     );
 };
-
-export default Cockpit;
+// memoization is technique that takes a snapshot or makes a log of the component in it s current state. It helps not update functional components that are not being changed on the Apps re render
+export default React.memo(Cockpit);
