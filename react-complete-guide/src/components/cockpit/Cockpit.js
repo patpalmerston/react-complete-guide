@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import classes from './Cockpit.css';
 
-const Cockpit = props => {
+const Cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
         // setTimeout(() => {
