@@ -5,9 +5,9 @@ import classes from './Cockpit.css';
 const Cockpit = props => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-        setTimeout(() => {
-            alert('saved data to cloud');
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('saved data to cloud');
+        // }, 1000);
         // you can make a return that will run after a render cycle
         return () => {
             console.log('[Cockpit.js] cleanup work in useEffect');
