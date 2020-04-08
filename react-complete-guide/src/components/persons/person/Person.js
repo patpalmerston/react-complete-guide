@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Auxillary from '../../../hoc/Auxillary';
 
 import classes from './Person.css';
@@ -11,7 +11,8 @@ class Person extends Component {
     render() {
         console.log('[Person.js] rendering...');
         return (
-            <Auxillary>
+            // instead of using Auxillary we can use the built in Fragment HOC
+            <Fragment>
                 {/* <div className={classes.Person}> */}
                 <p key='i1' onClick={this.props.click}>
                     I'm {this.props.name} and I am {this.props.age} years old!
@@ -24,7 +25,7 @@ class Person extends Component {
                     value={this.props.name}
                 />
                 {/* </div> */}
-            </Auxillary>
+            </Fragment>
         );
     }
 }
