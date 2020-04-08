@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/persons/Persons';
 import Cockpit from '../components/cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 
 class App extends Component {
     constructor(props) {
@@ -14,11 +15,11 @@ class App extends Component {
         persons: [
             { id: 'asfa1', name: 'Max', age: 28 },
             { id: 'vasdf1', name: 'Manu', age: 29 },
-            { id: 'asdf11', name: 'Stephanie', age: 26 }
+            { id: 'asdf11', name: 'Stephanie', age: 26 },
         ],
         otherState: 'some other value',
         showPersons: false,
-        showCockpit: true
+        showCockpit: true,
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -43,12 +44,12 @@ class App extends Component {
     }
 
     nameChangedHandler = (event, id) => {
-        const personIndex = this.state.persons.findIndex(p => {
+        const personIndex = this.state.persons.findIndex((p) => {
             return p.id === id;
         });
 
         const person = {
-            ...this.state.persons[personIndex]
+            ...this.state.persons[personIndex],
         };
 
         // const person = Object.assign({}, this.state.persons[personIndex]);
@@ -61,7 +62,7 @@ class App extends Component {
         this.setState({ persons: persons });
     };
 
-    deletePersonHandler = personIndex => {
+    deletePersonHandler = (personIndex) => {
         // const persons = this.state.persons.slice();
         const persons = [...this.state.persons];
         persons.splice(personIndex, 1);
@@ -88,7 +89,7 @@ class App extends Component {
         }
 
         return (
-            <div className={classes.App}>
+            <WithClass classes={classes.App}>
                 <button
                     onClick={() => {
                         this.setState({ showCockpit: false });
@@ -106,7 +107,7 @@ class App extends Component {
                     />
                 ) : null}
                 {persons}
-            </div>
+            </WithClass>
         );
         // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
     }
