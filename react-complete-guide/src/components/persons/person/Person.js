@@ -6,8 +6,13 @@ import withClass from '../../../hoc/withClass';
 import classes from './Person.css';
 
 class Person extends Component {
+    constructor(props) {
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
     componentDidMount() {
-        this.inputElement.focus();
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
     }
     // you can render an array of multiple elements without the parent div, but each array should have a key
     render() {
@@ -22,9 +27,10 @@ class Person extends Component {
                 <input
                     key='i3'
                     // you can add special ref key word to isolate the element
-                    ref={(inputEl) => {
-                        this.inputElement = inputEl;
-                    }}
+                    // ref={(inputEl) => {
+                    //     this.inputElement = inputEl;
+                    // }}
+                    ref={this.inputElementRef}
                     type='text'
                     onChange={this.props.changed}
                     value={this.props.name}
