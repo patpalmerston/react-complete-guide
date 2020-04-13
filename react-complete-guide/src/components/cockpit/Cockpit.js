@@ -49,6 +49,7 @@ const Cockpit = (props) => {
             >
                 Toggle Persons
             </button>
+            <button onClick={props.login}>Log In</button>
         </div>
     );
 };
