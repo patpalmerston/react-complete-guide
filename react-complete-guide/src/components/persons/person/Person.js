@@ -6,8 +6,8 @@ import withClass from '../../../hoc/withClass';
 import classes from './Person.css';
 
 class Person extends Component {
-    constructor() {
-        super();
+    componentDidMount() {
+        this.inputElement.focus();
     }
     // you can render an array of multiple elements without the parent div, but each array should have a key
     render() {
@@ -21,6 +21,10 @@ class Person extends Component {
                 <p key='i2'>{this.props.children}</p>
                 <input
                     key='i3'
+                    // you can add special ref key word to isolate the element
+                    ref={(inputEl) => {
+                        this.inputElement = inputEl;
+                    }}
                     type='text'
                     onChange={this.props.changed}
                     value={this.props.name}
