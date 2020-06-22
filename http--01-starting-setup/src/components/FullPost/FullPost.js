@@ -10,6 +10,7 @@ class FullPost extends Component {
 
     componentDidUpdate() {
         if (this.props.id) {
+            // if we dont have the loaded post or if we do have it or it has a different id than the one we are loading
             if (
                 !this.state.loadedPost ||
                 (this.state.loadedPost &&
