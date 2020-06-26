@@ -8,6 +8,7 @@ class Posts extends Component {
         posts: [],
     };
     componentDidMount() {
+        console.log('Posts', this.props);
         axios
             .get('/posts')
             .then((response) => {

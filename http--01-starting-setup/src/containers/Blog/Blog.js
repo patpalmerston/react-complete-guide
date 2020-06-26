@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
+//Link allows us to navigate components without reloading the html page, "a" tags reload the whole page
 import { Route, Link } from 'react-router-dom';
 
 import Posts from './Posts/Posts';
