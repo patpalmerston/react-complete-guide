@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 //Link allows us to navigate components without reloading the html page, "a" tags reload the whole page
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 import Posts from './Posts/Posts';
 import NewPost from '../Blog/NewPost/NewPost';
@@ -15,10 +15,20 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li>
-                                <Link to='/'>Home</Link>
+                                <NavLink to='/' exact>
+                                    Home
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to='/new-post'>New Post</Link>
+                                <NavLink
+                                    to={{
+                                        pathname: '/new-post',
+                                        hash: '#submit',
+                                        search: '?quick-submit=true',
+                                    }}
+                                >
+                                    New Post
+                                </NavLink>
                             </li>
                         </ul>
                     </nav>
