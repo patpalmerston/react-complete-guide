@@ -10,6 +10,14 @@ class FullPost extends Component {
 
     componentDidMount() {
         console.log(this.props);
+        this.loadData();
+    }
+
+    componentDidUpdate() {
+        this.loadData();
+    }
+
+    loadData() {
         if (this.props.match.params.id) {
             // if we dont have the loaded post or if we do have it or it has a different id than the one we are loading
             if (
