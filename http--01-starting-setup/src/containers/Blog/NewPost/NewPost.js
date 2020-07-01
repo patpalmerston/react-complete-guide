@@ -26,7 +26,9 @@ class NewPost extends Component {
             .post('/posts', data)
             .then((res) => {
                 console.log('newpost res', res);
-                this.setState({ submitted: true });
+                // this.setState({ submitted: true }); or you can use
+                this.props.history.push('/posts');
+                // you can also use 'history.replace('/posts') which will replace the page with posts so you can not use the back button
             })
             .catch();
     };
