@@ -14,6 +14,8 @@ class NewPost extends Component {
 
     componentDidMount() {
         console.log('New Post', this.props);
+        // If the component does mount then we replace the component with a new one
+        // if unauth => this.props.history.replace('/posts')
     }
 
     postDataHandler = () => {
