@@ -5,14 +5,18 @@ import React, { Component } from 'react';
 // Switch allows us to only load one link at a time
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import Posts from './Posts/Posts';
-import NewPost from '../Blog/NewPost/NewPost';
-// import FullPost from './FullPost/FullPost';
+import asyncComponent from '../../hoc/AsyncComponent';
 import './Blog.css';
+// import NewPost from '../Blog/NewPost/NewPost';
+
+const AsyncNewComponent = asyncComponent(() => {
+    return import('./NewPost/NewPost');
+});
 
 class Blog extends Component {
     // create state to replicate auth
     state = {
-        auth: false,
+        auth: true,
     };
 
     render() {
@@ -51,7 +55,7 @@ class Blog extends Component {
                 <Switch>
                     {/* check if auth state is true with turnary - this is considered a guard as the redirect will send us to posts as soon as the conditional is false and is null*/}
                     {this.state.auth ? (
-                        <Route path='/new-post' component={NewPost} />
+                        <Route path='/new-post' component={AsyncNewComponent} />
                     ) : null}
                     <Route path='/posts' component={Posts} />
                     <Route render={() => <h1>Not found</h1>} />
