@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 //Link allows us to navigate components without reloading the html page, "a" tags reload the whole page
 // The order of links is important
-// Switch allows us to only load one link at a time
+// Switch allows us to only load one link at a times
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import Posts from './Posts/Posts';
 import asyncComponent from '../../hoc/AsyncComponent';
