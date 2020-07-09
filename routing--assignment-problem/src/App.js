@@ -9,18 +9,23 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className='App'>
-                    <header></header>
                     <ol style={{ textAlign: 'left' }}>
+                        <li>
+                            Add a simple navigation with two links => One
+                            leading to "Users", one leading to "Courses"
+                        </li>
+                        <header>
+                            <nav>
+                                <Link to='/Users'>Users</Link>
+                                <Link to='/Courses'>Courses</Link>
+                            </nav>
+                        </header>
                         <li>
                             Add Routes to load "Users" and "Courses" on
                             different pages (by entering a URL, without Links)
                         </li>
                         <Route path='/Users' component={Users} />
                         <Route path='/Courses' component={Courses} />
-                        <li>
-                            Add a simple navigation with two links => One
-                            leading to "Users", one leading to "Courses"
-                        </li>
                         <li>
                             Make the courses in "Courses" clickable by adding a
                             link and load the "Course" component in the place of
