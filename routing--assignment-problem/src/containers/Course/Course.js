@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Course extends Component {
-    render () {
+    render() {
         return (
             <div>
                 <h1>_COURSE_TITLE_</h1>

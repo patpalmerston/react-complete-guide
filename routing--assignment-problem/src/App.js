@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import Courses from './containers/Courses/Courses';
+import Course from './containers/Course/Course';
 import Users from './containers/Users/Users';
 // const Browser = <BrowserRouter />; ??????
 class App extends Component {
@@ -14,18 +15,10 @@ class App extends Component {
                             Add a simple navigation with two links => One
                             leading to "Users", one leading to "Courses"
                         </li>
-                        <header>
-                            <nav>
-                                <Link to='/Users'>Users</Link>
-                                <Link to='/Courses'>Courses</Link>
-                            </nav>
-                        </header>
                         <li>
                             Add Routes to load "Users" and "Courses" on
                             different pages (by entering a URL, without Links)
                         </li>
-                        <Route path='/Users' component={Users} />
-                        <Route path='/Courses' component={Courses} />
                         <li>
                             Make the courses in "Courses" clickable by adding a
                             link and load the "Course" component in the place of
@@ -54,6 +47,37 @@ class App extends Component {
                             Your "Courses" page)
                         </li>
                     </ol>
+                    <header>
+                        <nav>
+                            <ul
+                                style={{
+                                    listStyle: 'none',
+                                    margin: 'auto',
+                                    padding: '0',
+                                }}
+                            >
+                                <li
+                                    style={{
+                                        margin: '10px',
+                                        display: 'inline-block',
+                                    }}
+                                >
+                                    <Link to='/Users'>Users</Link>
+                                </li>
+                                <li
+                                    style={{
+                                        margin: '10px',
+                                        display: 'inline-block',
+                                    }}
+                                >
+                                    <Link to='/Courses'>Courses</Link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </header>
+                    <Route path='/users' component={Users} />
+                    <Route path='/courses' component={Courses} />
+                    <Route path='/courses/course' component={Course} />
                 </div>
             </BrowserRouter>
         );
